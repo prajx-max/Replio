@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AI connection · Replio — AI Business Assistant</title>
+    <link rel="stylesheet" href="/setup.css" />
+  </head>
+  <body>
+    <header>
+      <span class="mark">▤</span
+      ><strong>Replio <small>— AI Business Assistant</small></strong
+      ><span class="badge">Local AI setup</span>
+    </header>
+    <main>
+      <p class="eyebrow">YOUR MODEL. YOUR BUSINESS.</p>
+      <h1>Connect your AI.<br />Keep your keys private.</h1>
+      <p class="intro">
+        Choose a provider, enter your model ID, and add its API key. The
+        extension receives a pairing code, never your provider key.
+      </p>
+      <form id="configuration">
+        <fieldset id="fields" disabled>
+          <h2>Model connection</h2>
+          <label for="profile">Business profile ID</label
+          ><input
+            id="profile"
+            required
+            maxlength="128"
+            value="sweet-crumbs-demo"
+            autocomplete="off"
+          />
+          <p class="hint">Use the profile ID shown in extension settings.</p>
+          <div class="grid">
+            <div>
+              <label for="provider">AI provider</label
+              ><select id="provider">
+                <option value="openai">OpenAI</option>
+                <option value="gemini">Google Gemini</option>
+                <option value="anthropic">Anthropic Claude</option>
+                <option value="groq">Groq</option>
+                <option value="deepseek">DeepSeek</option>
+                <option value="openrouter">OpenRouter</option>
+                <option value="mistral">Mistral AI</option>
+                <option value="xai">xAI</option>
+                <option value="together">Together AI</option>
+                <option value="custom">Custom (OpenAI-compatible)</option>
+              </select>
+            </div>
+            <div>
+              <label for="model">Model ID</label
+              ><input
+                id="model"
+                required
+                maxlength="128"
+                placeholder="Your provider’s model ID"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <p class="hint">
+            Enter the exact model ID from your provider, including the
+            organization prefix when required (for example, organization/model).
+          </p>
+          <div id="compatibilityFields" hidden>
+            <div id="endpointFields" hidden>
+              <label for="baseUrl">API base URL</label>
+              <input
+                id="baseUrl"
+                type="url"
+                maxlength="512"
+                placeholder="https://api.example.com/v1"
+                autocomplete="off"
+                spellcheck="false"
+                disabled
+              />
+              <p class="hint">
+                Use a provider that supports OpenAI-compatible Chat Completions.
+                Enter its base URL; Replio adds /chat/completions. Use a public
+                HTTPS address on port 443, without an API key in the URL.
+                Localhost and private network addresses are not supported.
+              </p>
+            </div>
+            <label for="responseFormat">Response format</label>
+            <select id="responseFormat" disabled>
+              <option value="json_object">JSON mode (recommended)</option>
+              <option value="text">Prompted JSON (without JSON mode)</option>
+            </select>
+            <p class="hint">
+              If your model rejects JSON mode, choose Prompted JSON and test
+              again. The model must still return a valid structured reply.
+            </p>
+          </div>
+          <label for="key">Model API key</label
+          ><input
+            id="key"
+            type="password"
+            autocomplete="new-password"
+            maxlength="512"
+            placeholder="Paste the key from your provider"
+          />
+          <p class="hint">
+            Leave blank to keep the saved key for the same provider and API base
+            URL. Enter a new key when changing the provider or base URL.
+          </p>
+          <label for="remember"
+            ><input id="remember" type="checkbox" /> Remember connection on this
+            PC</label
+          >
+          <p class="hint">
+            Saves the key and pairing in a private backend environment file so
+            restarts keep working. Use this on your own trusted computer.
+            Uncheck for session-only storage, which requires setup again after
+            restart.
+          </p>
+          <button id="save" type="submit">Save model connection →</button>
+          <p id="message" role="status" aria-live="polite"></p>
+        </fieldset>
+      </form>
+      <section id="pairing" hidden>
+        <div class="heading">
+          <h2>Pair with the extension</h2>
+          <span class="badge">Key configured</span>
+        </div>
+        <p>
+          Paste this pairing code into
+          <strong>Business settings → AI connection</strong> in the extension.
+        </p>
+        <label for="code">Extension pairing code</label
+        ><input id="code" readonly autocomplete="off" />
+        <div class="actions">
+          <button id="copy" type="button">Copy pairing code</button
+          ><button id="test" class="secondary" type="button">
+            Test model connection
+          </button>
+        </div>
+        <p class="hint">
+          Testing sends one short request to your provider and may use API
+          credits.
+        </p>
+        <button id="clear" class="quiet" type="button">
+          Remove this model key and revoke pairing
+        </button>
+      </section>
+      <footer>
+        <strong>Your API key stays here.</strong>
+        <p>
+          It is sent only to the selected provider when generating or testing a
+          reply. It is never returned to the extension, written into browser
+          storage, or included in extension code. Remembered connections use a
+          backend-only environment file on this PC; it is not encrypted. Keep
+          that file private. Remove the model key above to delete the saved
+          connection and revoke pairing. Keep the backend running while using
+          WhatsApp suggestions.
+        </p>
+      </footer>
+    </main>
+    <script src="/setup.js" defer></script>
+  </body>
+</html>

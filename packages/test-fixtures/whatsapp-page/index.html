@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Local WhatsApp fixture</title>
+    <link rel="stylesheet" href="/fixture.css" />
+  </head>
+  <body>
+    <aside>
+      <h1>Local messaging fixture</h1>
+      <p>Fictional data. No WhatsApp account or external messaging.</p>
+      <label
+        >Customer message<input
+          id="question"
+          value="What is the price of Chocolate Truffle Cake?" /></label
+      ><button id="incoming">Receive incoming message</button
+      ><button id="outgoing">Add outgoing message</button
+      ><button id="duplicate">Duplicate last incoming node</button
+      ><button id="history">Prepend older history</button
+      ><button id="switch">Switch chat</button>
+      <label
+        ><input type="checkbox" id="hold-send" />Delay fixture Send
+        button</label
+      >
+    </aside>
+    <main id="main">
+      <header>
+        <span
+          data-testid="conversation-info-header-chat-title"
+          title="Fixture customer A"
+          data-chat-id="fixture-chat-a"
+          >Fixture customer A</span
+        >
+      </header>
+      <div data-testid="conversation-panel-messages">
+        <div class="message-in" data-id="history-a">
+          <span class="selectable-text copyable-text"
+            >An old message already present before the assistant loaded.</span
+          >
+        </div>
+      </div>
+      <footer>
+        <div
+          contenteditable="true"
+          role="textbox"
+          aria-label="Message composer"
+        ></div>
+        <button aria-label="Send" id="send">Send</button>
+        <p>Native send clicks: <output id="sent">0</output></p>
+      </footer>
+    </main>
+    <script src="/fixture.js" defer></script>
+  </body>
+</html>

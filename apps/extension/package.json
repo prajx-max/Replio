@@ -1,0 +1,33 @@
+{
+  "name": "@assistant/extension",
+  "version": "0.3.3",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build && vite build --config vite.content.config.ts",
+    "build:fixture": "vite build --mode fixture && vite build --config vite.content.config.ts --mode fixture",
+    "dev": "vite --host 127.0.0.1",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "exports": {
+    ".": {
+      "types": "./.types/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@assistant/contracts": "workspace:*",
+    "@assistant/core": "workspace:*",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.3.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "vite": "8.3.5"
+  }
+}

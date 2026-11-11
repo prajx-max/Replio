@@ -1,0 +1,10 @@
+packages:
+  - apps/*
+  - packages/*
+storeDir: .pnpm-store
+saveExact: true
+strictPeerDependencies: true
+engineStrict: true
+minimumReleaseAge: 1440
+blockExoticSubdeps: true
+trustPolicy: no-downgrade

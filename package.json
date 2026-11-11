@@ -1,0 +1,35 @@
+{
+  "name": "universal-whatsapp-business-assistant",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=24.0.0 <25",
+    "pnpm": ">=11.25.0 <12"
+  },
+  "scripts": {
+    "dev:api": "pnpm --filter @assistant/api build && pnpm --filter @assistant/api start",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint . --max-warnings 0",
+    "typecheck": "tsc -b --pretty false && tsc -p packages/contracts/tsconfig.tests.json --pretty false && tsc -p packages/core/tsconfig.tests.json --pretty false && tsc -p apps/extension/tsconfig.tests.json --pretty false && tsc -p apps/api/tsconfig.tests.json --pretty false && tsc -p apps/api/setup/tsconfig.json --noEmit --pretty false && tsc -p tsconfig.tools.json --pretty false",
+    "test": "vitest run",
+    "build": "tsc -b --pretty false && pnpm --filter @assistant/api build && pnpm --filter @assistant/extension build && pnpm --filter @assistant/extension build:fixture && node scripts/verify-build.mjs",
+    "test:e2e": "playwright test",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm test:e2e"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.64.1",
+    "@testing-library/react": "16.3.3",
+    "@testing-library/user-event": "14.6.8",
+    "@types/node": "24.19.2",
+    "eslint": "10.13.0",
+    "jsdom": "30.1.3",
+    "prettier": "3.9.10",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.72.0",
+    "vitest": "5.0.5"
+  }
+}

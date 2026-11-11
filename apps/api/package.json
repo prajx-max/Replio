@@ -1,0 +1,24 @@
+{
+  "name": "@assistant/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b && tsc -p setup/tsconfig.json",
+    "start": "node --env-file-if-exists=../../.env dist/server.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@assistant/contracts": "workspace:*",
+    "@assistant/core": "workspace:*",
+    "zod": "4.6.7"
+  }
+}
