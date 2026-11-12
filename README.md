@@ -1,4 +1,4 @@
-# Replio — AI Business Assistant
+# Replio — AI Business WhatsApp Assistant
 
 A local Chrome MV3 assistant that observes new incoming WhatsApp Web text and generates replies using your business instructions, information and chosen model API. Choose editable drafts or opt-in Auto-reply.
 
